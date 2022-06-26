@@ -47,7 +47,7 @@ def test_format_for_excel():
         },
     ]
 
-    assert format_data_for_excel(people) == [
-        'Alfonso,Ruiz,"Senior Software Engineer"',
-        'Sayid,Khan,"Project Manager"',
-    ]
+    expect = '\n'.join(['given,family,title',
+                        'Alfonso,Ruiz,"Senior Software Engineer"',
+                        'Sayid,Khan,"Project Manager"'])
+    assert format_data_for_excel(people) == expect
