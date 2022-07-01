@@ -3,32 +3,23 @@
 """Test the `is_palindrome()` function."""
 
 
+import pytest
+
 from palindrome import is_palindrome
 
 
-def test_is_palindrome_empty_string():
-    assert is_palindrome('')
+@pytest.mark.parametrize('is_one', [
+    '',
+    'a',
+    'Bob',
+    'Never odd or even',
+    'Do geese see God?',
+])
+def test_is_palindrome(is_one):
+    assert is_palindrome(is_one)
 
 
-def test_is_palindrome_single_character():
-    assert is_palindrome('a')
-
-
-def test_is_palindrome_mixed_casing():
-    assert is_palindrome('Bob')
-
-
-def test_is_palindrome_with_spaces():
-    assert is_palindrome('Never odd or even')
-
-
-def test_is_palindrome_with_punctuation():
-    assert is_palindrome('Do geese see God?')
-
-
-def test_is_palindrome_not_palindrome():
-    assert not is_palindrome('abc')
-
-
-def test_is_palindrome_not_quite():
-    assert not is_palindrome('abab')
+# noinspection SpellCheckingInspection
+@pytest.mark.parametrize('is_not_one', ['abc', 'abab'])
+def test_is_not_palindrome(is_not_one):
+    assert not is_palindrome(is_not_one)
